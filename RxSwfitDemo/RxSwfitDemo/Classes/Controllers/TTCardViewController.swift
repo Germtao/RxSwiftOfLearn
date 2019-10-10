@@ -26,7 +26,7 @@ extension TTCardViewController {
 
 extension TTCardViewController {
     @IBAction func clearCard() {
-        TTShoppingCart.shared.commodities = []
+        TTShoppingCart.shared.commodities.accept([])
         navigationController?.popViewController(animated: true)
     }
 }

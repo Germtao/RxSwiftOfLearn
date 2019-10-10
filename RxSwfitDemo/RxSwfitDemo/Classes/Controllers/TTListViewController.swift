@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TTListViewController: UIViewController {
     
     @IBOutlet weak var cardItem: UIBarButtonItem!
     @IBOutlet weak var listView: UITableView!
     let europeanCommodities = Commodity.ofEurope
+    
+    private let disposeBag = DisposeBag()
 }
 
 extension TTListViewController {
@@ -23,17 +27,21 @@ extension TTListViewController {
         
         listView.delegate = self
         listView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateCardItem()
+        
+        setupCartObserver()
     }
 }
 
+// MARK: - Rx Setup
 extension TTListViewController {
-    func updateCardItem() {
-        cardItem.title = "\(TTShoppingCart.shared.commodities.count)🍫"
+    func setupCartObserver() {
+        // 1.
+        TTShoppingCart.shared.commodities.asObservable()
+            .subscribe(onNext: { // 2.
+                [unowned self] commondites in
+                self.cardItem.title = "\(commondites.count)🍫"
+            }) // 3.
+            .disposed(by: disposeBag)
     }
 }
 
@@ -58,7 +66,7 @@ extension TTListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let commodity = europeanCommodities[indexPath.row]
-        TTShoppingCart.shared.commodities.append(commodity)
-        updateCardItem()
+        let newValue = TTShoppingCart.shared.commodities.value + [commodity]
+        TTShoppingCart.shared.commodities.accept(newValue)
     }
 }

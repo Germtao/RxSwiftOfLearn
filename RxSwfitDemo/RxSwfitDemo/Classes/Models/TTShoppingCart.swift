@@ -7,32 +7,33 @@
 //
 
 import UIKit
+import RxCocoa
 
 class TTShoppingCart: NSObject {
     static let shared = TTShoppingCart()
     
     /// 商品数组
-    var commodities: [Commodity] = []
+    let commodities: BehaviorRelay<[Commodity]> = BehaviorRelay(value: [])
 }
 
 // MARK: - 不可变
 extension TTShoppingCart {
     /// 总花费
     var totalCost: Float {
-        return commodities.reduce(0) { (runningTotal, commodity) in
+        return commodities.value.reduce(0) { (runningTotal, commodity) in
             return runningTotal + commodity.priceInDollars
         }
     }
     
     var itemCountStr: String {
-        guard commodities.count > 0 else {
+        guard commodities.value.count > 0 else {
             return "🚫🍫"
         }
         
-        let setOfCommodities = Set<Commodity>(commodities)
+        let setOfCommodities = Set<Commodity>(commodities.value)
         
         let itemStrings: [String] = setOfCommodities.map { (commodity) in
-            let count: Int = commodities.reduce(0) { (runningTotal, reduceCommodity) in
+            let count: Int = commodities.value.reduce(0) { (runningTotal, reduceCommodity) in
                 if commodity == reduceCommodity {
                     return runningTotal + 1
                 }
