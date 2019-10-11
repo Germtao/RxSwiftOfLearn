@@ -14,7 +14,8 @@ class TTListViewController: UIViewController {
     
     @IBOutlet weak var cardItem: UIBarButtonItem!
     @IBOutlet weak var listView: UITableView!
-    let europeanCommodities = Commodity.ofEurope
+    
+    let europeanCommodities = Observable.just(Commodity.ofEurope)
     
     private let disposeBag = DisposeBag()
 }
@@ -22,13 +23,10 @@ class TTListViewController: UIViewController {
 extension TTListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "商品列表"
         
-        listView.delegate = self
-        listView.dataSource = self
-        
         setupCartObserver()
+        setupCellConfiguration()
     }
 }
 
@@ -43,30 +41,17 @@ extension TTListViewController {
             }) // 3.
             .disposed(by: disposeBag)
     }
-}
-
-extension TTListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return europeanCommodities.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: TTListViewCell.reuseIdentifier,
-                                                       for: indexPath) as? TTListViewCell else {
-            return UITableViewCell()
+    func setupCellConfiguration() {
+        // 1.
+        europeanCommodities
+            .bind(to: listView
+                .rx // 2.
+                .items(cellIdentifier: TTListViewCell.reuseIdentifier,
+                       cellType: TTListViewCell.self)) { // 3.
+                        (row, commodity, cell) in
+                cell.configure(with: commodity) // 4.
         }
-        let commodity = europeanCommodities[indexPath.row]
-        cell.configure(with: commodity)
-        return cell
-    }
-}
-
-extension TTListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let commodity = europeanCommodities[indexPath.row]
-        let newValue = TTShoppingCart.shared.commodities.value + [commodity]
-        TTShoppingCart.shared.commodities.accept(newValue)
+        .disposed(by: disposeBag) // 5.
     }
 }

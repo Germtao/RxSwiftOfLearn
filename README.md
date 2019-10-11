@@ -67,3 +67,37 @@ func setupCartObserver() {
 2. 在该`Observable`上调用`subscription（onNext :)`，以发现对`Observable`值的更改。`subscription（onNext :)`接受每次值更改时执行的闭包，闭包的传入参数是`Observable`的新值。将一直收到这些通知，直到取消订阅或订阅`dispose`为止。
 
 3. 将上一步中的`Observer`添加到`disposeBag`中，这将在取消分配订阅对象时处理您的订阅。
+
+## RxCocoa：使TableView处于活动状态
+
+`RxCocoa`具有用于几种不同类型UI元素的反应性API，这些使得可以创建表视图而不覆盖委托或数据源方法。
+
+```
+let europeanCommodities = Observable.just(Commodity.ofEurope)
+```
+`just(_:)`表示`Observable`的基础值不会有任何变化，但仍然希望将其作为`Observable`值进行访问。
+
+```
+func setupCellConfiguration() {
+    // 1.
+    europeanCommodities
+        .bind(to: listView
+            .rx // 2.
+            .items(cellIdentifier: TTListViewCell.reuseIdentifier,
+                   cellType: TTListViewCell.self)) { // 3.
+                    (row, commodity, cell) in
+            cell.configure(with: commodity) // 4.
+    }
+    .disposed(by: disposeBag) // 5.
+}
+```
+
+1. 调用`bind(to: )`将可观察到的`europeanCommodities`与执行表视图中每一行的代码相关联。
+
+2. 通过调用`rx`，可以访问相关类的`RxCocoa`扩展。在这种情况下，它是一个UITableView。
+
+3. 调用`rx`方法`items(cellIdentifier:cellType:)`，传入单元格标识符和要使用的单元格类型的类。`rx`框架调用出队方法，就像您的表视图具有其原始数据源一样。
+
+4. 为每个`item`传递一个`block`，该`item`的商品和单元格的信息将返回。
+
+5. 将`bind(to:)`返回的`Disposable`添加到`disposeBag`中。
