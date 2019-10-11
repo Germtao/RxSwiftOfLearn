@@ -16,18 +16,19 @@ extension String {
         let firstTwo = prefix(upTo: index2)
         let rest = suffix(from: index2)
         
-        return firstTwo + "/" + rest
+        return firstTwo + " / " + rest
     }
     
     var removingSlash: String {
-        return replacingOccurrences(of: "/", with: "")
+        return replacingOccurrences(of: " / ", with: "")
     }
     
     var isExpirationDateValid: Bool {
         let noSlash = removingSlash
         
         // mmyyyy
-        guard noSlash.count == 6, noSlash.areAllCharactersNumbers else { return false }
+        guard noSlash.count == 6 &&
+            noSlash.areAllCharactersNumbers else { return false }
         
         let index2 = index(startIndex, offsetBy: 2)
         let monthString = prefix(upTo: index2)

@@ -220,6 +220,9 @@
                                         <state key="normal" title="确认付款">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Oze-p2-lD4" kind="show" identifier="purchaseSuccess" id="GeN-9n-541"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -253,6 +256,91 @@
             </objects>
             <point key="canvasLocation" x="2667" y="138"/>
         </scene>
+        <!--Commodity Coming View Controller-->
+        <scene sceneID="Hgo-ob-gdg">
+            <objects>
+                <viewController id="Oze-p2-lD4" customClass="TTCommodityComingViewController" customModule="RxSwfitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qsd-hV-T8T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IrX-Ab-gJJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="4YZ-PL-XwD">
+                                        <rect key="frame" x="20" y="20" width="374" height="311"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4YZ-PL-XwD" secondAttribute="height" multiplier="160:133" id="Vi0-pO-Tm0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="aND-TN-HUo">
+                                        <rect key="frame" x="30" y="351" width="173" height="125.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-5m-4hi">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇨🇳 🍫:  2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIu-vj-JWh">
+                                                <rect key="frame" x="0.0" y="20.5" width="74" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One meelion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFq-2K-R4a">
+                                                <rect key="frame" x="0.0" y="41" width="96" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dd1-hI-o3H">
+                                                <rect key="frame" x="0.0" y="61.5" width="173" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款信用卡：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF5-lQ-x3K">
+                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="64"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unknownCard" translatesAutoresizingMaskIntoConstraints="NO" id="yEy-Sg-vBI">
+                                                        <rect key="frame" x="109" y="0.0" width="64" height="64"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aND-TN-HUo" firstAttribute="leading" secondItem="4YZ-PL-XwD" secondAttribute="leading" constant="10" id="HkV-M7-eTt"/>
+                                    <constraint firstAttribute="trailing" secondItem="4YZ-PL-XwD" secondAttribute="trailing" constant="20" id="KKD-Bm-g4d"/>
+                                    <constraint firstAttribute="bottom" secondItem="aND-TN-HUo" secondAttribute="bottom" constant="20" id="OO5-Qx-JRX"/>
+                                    <constraint firstItem="4YZ-PL-XwD" firstAttribute="leading" secondItem="IrX-Ab-gJJ" secondAttribute="leading" constant="20" id="VHc-iG-saW"/>
+                                    <constraint firstItem="aND-TN-HUo" firstAttribute="top" secondItem="4YZ-PL-XwD" secondAttribute="bottom" constant="20" id="lA7-ye-IS5"/>
+                                    <constraint firstItem="4YZ-PL-XwD" firstAttribute="centerX" secondItem="IrX-Ab-gJJ" secondAttribute="centerX" id="nIg-2t-4M5"/>
+                                    <constraint firstItem="4YZ-PL-XwD" firstAttribute="top" secondItem="IrX-Ab-gJJ" secondAttribute="top" constant="20" id="xkP-6o-8ce"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="IrX-Ab-gJJ" secondAttribute="bottom" id="7Ky-18-NWJ"/>
+                            <constraint firstItem="IrX-Ab-gJJ" firstAttribute="top" secondItem="qsd-hV-T8T" secondAttribute="top" id="8WL-cf-w9w"/>
+                            <constraint firstItem="IrX-Ab-gJJ" firstAttribute="leading" secondItem="qsd-hV-T8T" secondAttribute="leading" id="X2T-uO-eFf"/>
+                            <constraint firstAttribute="trailing" secondItem="IrX-Ab-gJJ" secondAttribute="trailing" id="jqb-if-p83"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Ib-Bj-B7r"/>
+                    <connections>
+                        <outlet property="costLabel" destination="AFq-2K-R4a" id="eFa-ag-oe8"/>
+                        <outlet property="creditCardIcon" destination="yEy-Sg-vBI" id="IjK-7d-EPw"/>
+                        <outlet property="orderLabel" destination="SIu-vj-JWh" id="S2K-hs-lob"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uic-me-y4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3467" y="138"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jT3-UA-WO8">
             <objects>
@@ -278,6 +366,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="success" width="320.66665649414062" height="266.66665649414062"/>
         <image name="unknownCard" width="32" height="32"/>
     </resources>
 </document>

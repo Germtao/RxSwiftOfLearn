@@ -27,6 +27,8 @@
 		3BA3CABD234F1A9D00237E67 /* TTImageName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CABC234F1A9D00237E67 /* TTImageName.swift */; };
 		3BA3CABF234F22A600237E67 /* String+ExpirationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CABE234F22A600237E67 /* String+ExpirationDate.swift */; };
 		3BA3CAC1234F24B600237E67 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAC0234F24B600237E67 /* Date+Extension.swift */; };
+		3BA3CAC323502C1000237E67 /* TTCommodityComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAC223502C1000237E67 /* TTCommodityComingViewController.swift */; };
+		3BA3CAC623504D0100237E67 /* TTSegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAC523504D0100237E67 /* TTSegueHandler.swift */; };
 		7D03BB7CA8F5EAE6D5BAB376 /* Pods_RxSwfitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B6E5AF6F1791A0B656FE14 /* Pods_RxSwfitDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		3BA3CABC234F1A9D00237E67 /* TTImageName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTImageName.swift; sourceTree = "<group>"; };
 		3BA3CABE234F22A600237E67 /* String+ExpirationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ExpirationDate.swift"; sourceTree = "<group>"; };
 		3BA3CAC0234F24B600237E67 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		3BA3CAC223502C1000237E67 /* TTCommodityComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCommodityComingViewController.swift; sourceTree = "<group>"; };
+		3BA3CAC523504D0100237E67 /* TTSegueHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSegueHandler.swift; sourceTree = "<group>"; };
 		64B6E5AF6F1791A0B656FE14 /* Pods_RxSwfitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwfitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		676D9510B291C94677C81C4A /* Pods-RxSwfitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwfitDemo.release.xcconfig"; path = "Target Support Files/Pods-RxSwfitDemo/Pods-RxSwfitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		6CC7C4BF91A93E6DF6DEFC3A /* Pods-RxSwfitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwfitDemo.debug.xcconfig"; path = "Target Support Files/Pods-RxSwfitDemo/Pods-RxSwfitDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 		3BA3CA9F234ED5BC00237E67 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3BA3CAC423504CD700237E67 /* Protocols */,
 				3BA3CAB7234F154500237E67 /* Extensions */,
 				3BA3CAA8234EDB6500237E67 /* Models */,
 				3BA3CAA5234EDA2F00237E67 /* Views */,
@@ -120,6 +125,7 @@
 				3BA3CAA3234ED71D00237E67 /* TTListViewController.swift */,
 				3BA3CAAF234EFEB800237E67 /* TTCardViewController.swift */,
 				3BA3CAB1234F070700237E67 /* TTBillingInfoViewController.swift */,
+				3BA3CAC223502C1000237E67 /* TTCommodityComingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,6 +160,14 @@
 				3BA3CAC0234F24B600237E67 /* Date+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3BA3CAC423504CD700237E67 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3BA3CAC523504D0100237E67 /* TTSegueHandler.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		614C8335A2D6E78E364FB2C1 /* Frameworks */ = {
@@ -289,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BA3CAB2234F070700237E67 /* TTBillingInfoViewController.swift in Sources */,
+				3BA3CAC323502C1000237E67 /* TTCommodityComingViewController.swift in Sources */,
 				3BA3CAA7234EDA4500237E67 /* TTListViewCell.swift in Sources */,
 				3BA3CAAC234EDF0F00237E67 /* CurrencyFormatter.swift in Sources */,
 				3BA3CAB6234F0E0700237E67 /* TTCommodityButton.swift in Sources */,
@@ -302,6 +317,7 @@
 				3BA3CAAA234EDBAD00237E67 /* Commodity.swift in Sources */,
 				3BA3CAB9234F156300237E67 /* String+CreditCard.swift in Sources */,
 				3BA3CAB4234F0B3600237E67 /* TTValidatingTextField.swift in Sources */,
+				3BA3CAC623504D0100237E67 /* TTSegueHandler.swift in Sources */,
 				3BA3CAA2234ED6B900237E67 /* TTNavigationController.swift in Sources */,
 				3BA3CABB234F161000237E67 /* TTCardType.swift in Sources */,
 				3BA3CABD234F1A9D00237E67 /* TTImageName.swift in Sources */,
