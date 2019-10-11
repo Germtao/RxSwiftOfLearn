@@ -14,7 +14,45 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Zad-qt-y8i">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iDe-Ax-vGq">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCellId" textLabel="g1g-Iy-oQ7" style="IBUITableViewCellStyleDefault" id="TPE-lJ-U0Z">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TPE-lJ-U0Z" id="WBn-I2-gsK">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g1g-Iy-oQ7">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iDe-Ax-vGq" secondAttribute="trailing" id="8wY-ZS-hH1"/>
+                            <constraint firstItem="iDe-Ax-vGq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YEz-mt-yrR"/>
+                            <constraint firstItem="Zad-qt-y8i" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dRz-Wp-uVF"/>
+                            <constraint firstItem="Zad-qt-y8i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eJi-I8-jkS"/>
+                            <constraint firstItem="Zad-qt-y8i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="evA-hl-6j8"/>
+                            <constraint firstItem="iDe-Ax-vGq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fxF-at-pI2"/>
+                            <constraint firstItem="iDe-Ax-vGq" firstAttribute="top" secondItem="Zad-qt-y8i" secondAttribute="bottom" id="zNd-zp-wQE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="zPa-dN-C3p"/>

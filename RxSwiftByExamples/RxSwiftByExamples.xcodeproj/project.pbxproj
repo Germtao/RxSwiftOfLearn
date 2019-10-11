@@ -13,6 +13,7 @@
 		3BA3CADB235066F600237E67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA3CAD9235066F600237E67 /* Main.storyboard */; };
 		3BA3CADD235066FC00237E67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA3CADC235066FC00237E67 /* Assets.xcassets */; };
 		3BA3CAE0235066FC00237E67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA3CADE235066FC00237E67 /* LaunchScreen.storyboard */; };
+		3BA3CAEF23506E0600237E67 /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAEE23506E0600237E67 /* SearchCityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		3BA3CADC235066FC00237E67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BA3CADF235066FC00237E67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BA3CAE1235066FC00237E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BA3CAEE23506E0600237E67 /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		681CD4D249FF9EA59C7932A8 /* Pods_RxSwiftByExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftByExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		916B6C0504C0780686B20313 /* Pods-RxSwiftByExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftByExamples.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftByExamples/Pods-RxSwiftByExamples.debug.xcconfig"; sourceTree = "<group>"; };
 		E4FFA48D6876CB17A2DCA46F /* Pods-RxSwiftByExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftByExamples.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftByExamples/Pods-RxSwiftByExamples.release.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		3BA3CAD2235066F600237E67 /* RxSwiftByExamples */ = {
 			isa = PBXGroup;
 			children = (
+				3BA3CAEA23506AE000237E67 /* Classes */,
 				3BA3CAE8235067A700237E67 /* AppDelegate */,
 				3BA3CAE72350679900237E67 /* Storyboard */,
 				3BA3CAE9235067BA00237E67 /* SupportFile */,
@@ -93,6 +96,38 @@
 				3BA3CAE1235066FC00237E67 /* Info.plist */,
 			);
 			path = SupportFile;
+			sourceTree = "<group>";
+		};
+		3BA3CAEA23506AE000237E67 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3BA3CAED23506AFB00237E67 /* Models */,
+				3BA3CAEC23506AF600237E67 /* Views */,
+				3BA3CAEB23506AED00237E67 /* Controllers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3BA3CAEB23506AED00237E67 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3BA3CAEE23506E0600237E67 /* SearchCityViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3BA3CAEC23506AF600237E67 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3BA3CAED23506AFB00237E67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4ECAF7C4D47F282E6E26FD8D /* Pods */ = {
@@ -227,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA3CAEF23506E0600237E67 /* SearchCityViewController.swift in Sources */,
 				3BA3CAD4235066F600237E67 /* AppDelegate.swift in Sources */,
 				3BA3CAD6235066F600237E67 /* SceneDelegate.swift in Sources */,
 			);
