@@ -14,7 +14,7 @@ enum ImageName: String {
     discover,
     mastercard,
     visa,
-    unkonwnCard
+    unknownCard
     
     var image: UIImage? {
         guard let image = UIImage(named: rawValue) else { return nil }

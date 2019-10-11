@@ -18,12 +18,101 @@ class TTBillingInfoViewController: UIViewController {
     @IBOutlet weak var purchaseButton: UIButton!
     
     private let cardType: BehaviorRelay<TTCardType> = BehaviorRelay(value: .unknown)
+    
+    private let disposeBag = DisposeBag()
+    
+    private let throttleIntervalInMilliseconds = 100
 }
 
 extension TTBillingInfoViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "💳详情"
+        
+        setupCardImageDisplay()
+        setupTextChangeHandling()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let identifier = self.identifier(forSegue: segue)
+        switch identifier {
+        case .purchaseSuccess:
+            guard let destination = segue.destination as? TTCommodityComingViewController else {
+                assertionFailure("Couldn't get chocolate is coming VC!")
+                return
+            }
+            destination.cardType = cardType.value
+        }
+    }
+}
+
+// MARK: - Rx Setup
+extension TTBillingInfoViewController {
+    func setupCardImageDisplay() {
+        cardType
+            .asObservable() // 1.
+            .subscribe(onNext: { [unowned self] (cardType) in // 2.
+                self.creditCardImageView.image = cardType.image
+            })
+            .disposed(by: disposeBag) // 3.
+    }
+    
+    func setupTextChangeHandling() {
+        let creditCardValid = creditCardNumberTextField
+            .rx
+            .text // 1.
+            .observeOn(MainScheduler.asyncInstance)
+            .distinctUntilChanged()
+            .throttle(.milliseconds(throttleIntervalInMilliseconds), scheduler: MainScheduler.instance) // 2.
+            .map { [unowned self] in
+                self.validate(cardText: $0) // 3.
+        }
+        
+        creditCardValid
+            .subscribe(onNext: { [unowned self] in
+                self.creditCardNumberTextField.valid = $0 // 4.
+            })
+            .disposed(by: disposeBag) // 5.
+        
+        let expirationDateValid = expirationDateTextfield
+            .rx
+            .text
+            .observeOn(MainScheduler.asyncInstance)
+            .distinctUntilChanged()
+            .throttle(.milliseconds(throttleIntervalInMilliseconds), scheduler: MainScheduler.instance)
+            .map { [unowned self] in
+                self.validate(expirationDateText: $0)
+        }
+        
+        expirationDateValid
+            .subscribe(onNext: { [unowned self] in
+                self.expirationDateTextfield.valid = $0
+            })
+            .disposed(by: disposeBag)
+        
+        let cvvValid = cvvTextfield
+            .rx
+            .text
+            .observeOn(MainScheduler.asyncInstance)
+            .distinctUntilChanged()
+            .map { [unowned self] in
+                self.validate(cvv: $0)
+        }
+        
+        cvvValid
+            .subscribe(onNext: { [unowned self] in
+                self.cvvTextfield.valid = $0
+            })
+            .disposed(by: disposeBag)
+        
+        let everythingValid = Observable
+            .combineLatest(creditCardValid, expirationDateValid, cvvValid) {
+                $0 && $1 && $2
+        }
+        
+        everythingValid
+            .bind(to: purchaseButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -52,7 +141,7 @@ private extension TTBillingInfoViewController {
         let strippedSlashExpiration = expiration.removingSlash
         
         formatExpirationDate(using: strippedSlashExpiration)
-        advanceIfNecessary(noSpacesCardNumber: strippedSlashExpiration)
+        advanceIfNecessary(expirationNoSpacesOrSlash: strippedSlashExpiration)
         
         return strippedSlashExpiration.isExpirationDateValid
     }
@@ -97,5 +186,11 @@ private extension TTBillingInfoViewController {
         if cvv.count == cardType.value.cvvDigits {
             _ = cvvTextfield.resignFirstResponder()
         }
+    }
+}
+
+extension TTBillingInfoViewController: TTSegueHandlerType {
+    enum SegueIdentifier: String {
+        case purchaseSuccess
     }
 }

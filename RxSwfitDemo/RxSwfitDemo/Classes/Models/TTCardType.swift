@@ -91,7 +91,7 @@ enum TTCardType {
         case .visa:
             return ImageName.visa.image
         case .unknown:
-            return ImageName.unkonwnCard.image
+            return ImageName.unknownCard.image
         }
     }
     

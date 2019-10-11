@@ -130,3 +130,75 @@ func setupCellTapHandling() {
 4. 同样在闭包中，取消选择点击的行。
 
 5. 将`subscription(onNext:)`返回一个`Disposable`添加到`disposeBag`。
+
+## RxSwift和直接文本输入
+
+用户可以根据已知的信用卡类型查看他们要输入的信用卡类型：
+
+```
+func setupCardImageDisplay() {
+    cardType
+        .asObservable() // 1.
+        .subscribe(onNext: { [unowned self] (cardType) in // 2.
+            self.creditCardImageView.image = cardType.image
+        })
+        .disposed(by: disposeBag) // 3.
+}
+```
+
+>1. 将`cardType`对象作为一个`Observable`。
+
+> 2. 订阅该`Observable`以监听对`cardType`的更改。
+
+> 3. 确保将观察者丢弃到`disposeBag`中。
+
+由于用户可能会快速键入内容，因此每次按键运行验证的计算量可能很大，并且会导致UI滞后。为了解决这一问题，可以抑制用户输入在验证过程中移动的速度，这意味着将仅在限制时间间隔内验证输入，而不是在每次更改时验证输入。这样，快速打字不会使整个应用程序停顿下来。
+
+节流是`RxSwift`的专长，因为当事情发生变化时，通常会运行大量逻辑。
+
+`
+private let throttleIntervalInMilliseconds = 100
+`
+
+```
+func setupTextChangeHandling() {
+    let creditCardValid = creditCardNumberTextField
+        .rx
+        .text // 1.
+        .observeOn(MainScheduler.asyncInstance)
+        .distinctUntilChanged()
+        .throttle(.milliseconds(throttleIntervalInMilliseconds), scheduler: MainScheduler.instance) // 2.
+        .map { [unowned self] in
+        self.validate(cardText: $0) // 3.
+    }
+    
+    creditCardValid
+        .subscribe(onNext: { [unowned self] in
+            self.creditCardNumberTextField.valid = $0 // 4.
+        })
+        .disposed(by: disposeBag) // 5.
+}
+```
+
+>1. 返回文本字段的内容作为`Observable`值。 `text`是另一个`RxCocoa`扩展，这次是`UITextField`。
+
+>2. 限制输入以设置验证以根据上面定义的时间间隔运行。 `Scheduler`参数是一个更高级的概念，但简短的版本是它与线程绑定。要将所有内容保留在主线程上，请使用`MainScheduler`。
+
+>3. 通过将受限制的输入应用于类提供的`validate(cardText:)`来对其进行转换。如果卡输入有效，则监听到的布尔值的最终值为`true`。
+
+>4. 订阅创建的`Observable`值，然后根据输入的值更新文本字段的有效性。
+
+>5. 将生成的`Disposable`添加到`disposeBag`中。
+
+```
+let everythingValid = Observable
+    .combineLatest(creditCardValid, expirationDateValid, cvvValid) {
+        $0 && $1 && $2
+}
+
+everythingValid
+    .bind(to: purchaseButton.rx.isEnabled)
+    .disposed(by: disposeBag)
+```
+这使用`Observable`的`CombineLatest(_:)`来获取已经创建的三个`Observable`，并生成第四个。生成的`Observable（称为everythingValid）`为true或false，具体取决于所有三个输入是否有效。
+`everythingValid`反映了`UIButton`的反应式扩展程序中的`isEnabled`属性， `everythingValid`的值控制着购买按钮的状态。
