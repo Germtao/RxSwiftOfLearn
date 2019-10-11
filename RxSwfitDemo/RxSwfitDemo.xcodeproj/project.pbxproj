@@ -18,7 +18,7 @@
 		3BA3CAAA234EDBAD00237E67 /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAA9234EDBAD00237E67 /* Commodity.swift */; };
 		3BA3CAAC234EDF0F00237E67 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAAB234EDF0F00237E67 /* CurrencyFormatter.swift */; };
 		3BA3CAAE234EFA0D00237E67 /* TTShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAAD234EFA0D00237E67 /* TTShoppingCart.swift */; };
-		3BA3CAB0234EFEB800237E67 /* TTCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAAF234EFEB800237E67 /* TTCardViewController.swift */; };
+		3BA3CAB0234EFEB800237E67 /* TTCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAAF234EFEB800237E67 /* TTCartViewController.swift */; };
 		3BA3CAB2234F070700237E67 /* TTBillingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAB1234F070700237E67 /* TTBillingInfoViewController.swift */; };
 		3BA3CAB4234F0B3600237E67 /* TTValidatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAB3234F0B3600237E67 /* TTValidatingTextField.swift */; };
 		3BA3CAB6234F0E0700237E67 /* TTCommodityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAB5234F0E0700237E67 /* TTCommodityButton.swift */; };
@@ -46,7 +46,7 @@
 		3BA3CAA9234EDBAD00237E67 /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		3BA3CAAB234EDF0F00237E67 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		3BA3CAAD234EFA0D00237E67 /* TTShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTShoppingCart.swift; sourceTree = "<group>"; };
-		3BA3CAAF234EFEB800237E67 /* TTCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCardViewController.swift; sourceTree = "<group>"; };
+		3BA3CAAF234EFEB800237E67 /* TTCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCartViewController.swift; sourceTree = "<group>"; };
 		3BA3CAB1234F070700237E67 /* TTBillingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTBillingInfoViewController.swift; sourceTree = "<group>"; };
 		3BA3CAB3234F0B3600237E67 /* TTValidatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTValidatingTextField.swift; sourceTree = "<group>"; };
 		3BA3CAB5234F0E0700237E67 /* TTCommodityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCommodityButton.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			children = (
 				3BA3CAA1234ED6B900237E67 /* TTNavigationController.swift */,
 				3BA3CAA3234ED71D00237E67 /* TTListViewController.swift */,
-				3BA3CAAF234EFEB800237E67 /* TTCardViewController.swift */,
+				3BA3CAAF234EFEB800237E67 /* TTCartViewController.swift */,
 				3BA3CAB1234F070700237E67 /* TTBillingInfoViewController.swift */,
 				3BA3CAC223502C1000237E67 /* TTCommodityComingViewController.swift */,
 			);
@@ -308,7 +308,7 @@
 				3BA3CAAC234EDF0F00237E67 /* CurrencyFormatter.swift in Sources */,
 				3BA3CAB6234F0E0700237E67 /* TTCommodityButton.swift in Sources */,
 				3BA3CA8C234ED26300237E67 /* AppDelegate.swift in Sources */,
-				3BA3CAB0234EFEB800237E67 /* TTCardViewController.swift in Sources */,
+				3BA3CAB0234EFEB800237E67 /* TTCartViewController.swift in Sources */,
 				3BA3CAAE234EFA0D00237E67 /* TTShoppingCart.swift in Sources */,
 				3BA3CA8E234ED26300237E67 /* SceneDelegate.swift in Sources */,
 				3BA3CAA4234ED71D00237E67 /* TTListViewController.swift in Sources */,
