@@ -27,6 +27,7 @@ extension TTListViewController {
         
         setupCartObserver()
         setupCellConfiguration()
+        setupCellTapHandling()
     }
 }
 
@@ -53,5 +54,20 @@ extension TTListViewController {
                 cell.configure(with: commodity) // 4.
         }
         .disposed(by: disposeBag) // 5.
+    }
+    
+    func setupCellTapHandling() {
+        listView
+            .rx
+            .modelSelected(Commodity.self) // 1.
+            .subscribe(onNext: { [unowned self] (commodity) in // 2.
+                let newValue = TTShoppingCart.shared.commodities.value + [commodity]
+                TTShoppingCart.shared.commodities.accept(newValue) // 3.
+                
+                if let selectedRowIndexpath = self.listView.indexPathForSelectedRow {
+                    self.listView.deselectRow(at: selectedRowIndexpath, animated: true)
+                } // 4.
+            })
+            .disposed(by: disposeBag) // 5.
     }
 }

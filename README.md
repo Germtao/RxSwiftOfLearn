@@ -101,3 +101,32 @@ func setupCellConfiguration() {
 4. 为每个`item`传递一个`block`，该`item`的商品和单元格的信息将返回。
 
 5. 将`bind(to:)`返回的`Disposable`添加到`disposeBag`中。
+
+`RxCocoa`向`UITableView`添加了另一种扩展方法，称为`modelSelected(_:)`，这将返回一个`Observable`，可以用来订阅有关选定模型对象的信息。
+
+```
+func setupCellTapHandling() {
+    listView
+        .rx
+        .modelSelected(Commodity.self) // 1.
+        .subscribe(onNext: { [unowned self] (commodity) in // 2.
+            let newValue = TTShoppingCart.shared.commodities.value + [commodity]
+            TTShoppingCart.shared.commodities.accept(newValue) // 3.
+            
+            if let selectedRowIndexpath = self.listView.indexPathForSelectedRow {
+                self.listView.deselectRow(at: selectedRowIndexpath, animated: true)
+            } // 4.
+        })
+        .disposed(by: disposeBag) // 5.
+}
+```
+
+1. 调用表格视图的反应性扩展的`modelSelected(_:)`，传入`commodity`模型类型，以获取正确的项目类型，返回一个`Observable`。
+
+2. 将该`Observable`视为可观察对象，请调用`subscription(onNext:)`，并在每次选择模型（例如，点击一个单元格）时关闭应该执行的操作。
+
+3. 在传递给`subscription(onNext:)`的闭包中，将选定的商品添加到购物车中。
+
+4. 同样在闭包中，取消选择点击的行。
+
+5. 将`subscription(onNext:)`返回一个`Disposable`添加到`disposeBag`。
