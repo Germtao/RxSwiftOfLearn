@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search City View Controller-->
+        <!--基础-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchCityViewController" customModule="RxSwiftByExamples" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zPa-dN-C3p"/>
+                    <navigationItem key="navigationItem" title="基础" id="zPa-dN-C3p"/>
                     <connections>
                         <outlet property="searchBar" destination="Zad-qt-y8i" id="Z2K-hv-Lsx"/>
                         <outlet property="tableView" destination="iDe-Ax-vGq" id="vwu-H1-PR6"/>
@@ -63,7 +63,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1694" y="-350"/>
+        </scene>
+        <!--可观察对象和绑定-->
+        <scene sceneID="n6X-7k-AW5">
+            <objects>
+                <viewController id="hR2-dD-0Qg" customClass="ObservableAndBindViewController" customModule="RxSwiftByExamples" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gOi-Wz-ORB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ja-Ch-Pg7">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FEJ-Ee-zt2"/>
+                                    <constraint firstAttribute="width" constant="100" id="tv5-pm-cNw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1ja-Ch-Pg7" firstAttribute="centerX" secondItem="gOi-Wz-ORB" secondAttribute="centerX" id="4Qe-lG-Tj7"/>
+                            <constraint firstItem="1ja-Ch-Pg7" firstAttribute="centerY" secondItem="gOi-Wz-ORB" secondAttribute="centerY" id="kQi-q4-xRn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kwq-y6-k59"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="可观察对象和绑定" id="2bz-5I-xmj"/>
+                    <connections>
+                        <outlet property="circleView" destination="1ja-Ch-Pg7" id="AVp-u6-sma"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PbL-Ry-4RF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1693" y="353"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TOX-hE-LVT">
@@ -80,6 +113,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="uf2-7E-cJi" kind="relationship" relationship="viewControllers" id="0zw-id-97W"/>
+                        <segue destination="iGb-Sv-daJ" kind="relationship" relationship="viewControllers" id="nwG-TY-eTh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gdw-9U-Ywp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -95,7 +129,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rvN-7s-hRk">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -104,11 +142,37 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2UO-Mx-oYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="910" y="-349"/>
+        </scene>
+        <!--可观察对象和绑定-->
+        <scene sceneID="fut-aB-8e4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iGb-Sv-daJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="可观察对象和绑定" image="link.icloud" catalog="system" selectedImage="link.icloud.fill" id="zre-9q-MqC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AK8-R9-rdF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.24313725489999999" green="0.74901960779999999" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hR2-dD-0Qg" kind="relationship" relationship="rootViewController" id="8zM-Fa-EaZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Di-uj-C27" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="909" y="353"/>
         </scene>
     </scenes>
     <resources>
         <image name="b.circle" catalog="system" width="64" height="62"/>
         <image name="b.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="link.icloud" catalog="system" width="64" height="44"/>
+        <image name="link.icloud.fill" catalog="system" width="64" height="44"/>
     </resources>
 </document>
