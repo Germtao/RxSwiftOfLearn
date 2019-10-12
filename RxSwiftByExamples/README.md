@@ -63,3 +63,23 @@ circleView
     .bind(to: circleViewModel.centerVariable)
     .disposed(by: disposeBag)
 ```
+
+## Networking（网络）
+
+### Moya
+
+`Moya`是通常需要自己控制的所有网络工作之上的抽象层。基本上通过使用此库，将立即与API建立连接，并通过包含`RxSwift`和`ModelMapper`的扩展来建立我们的完整请求服务。
+
+### Setup
+
+需要一个`Provider`，其中包括存根，端点关闭等设置来设置`Moya`（将在进行测试时提供更多信息）。
+
+1.  对于我们的简单情况，我们实际上根本不需要任何东西，因此，这只是使用`RxSwift`初始化`Provider`。
+
+2. 然后，我们需要做的第二件事是终点配置 – 具有我们可能的终点目标的枚举。
+
+我们只需要创建符合`TargetType`的枚举就可以了，这是一个具有`url`、`方法`、`任务（是请求/上传/下载）`，`参数`和`parameterEncoding`（因此是URL请求的基本内容）的协议，需要指定的最后一个参数是`sampleData`。
+
+### Example
+
+
