@@ -15,6 +15,7 @@
 		3BA3CAE0235066FC00237E67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA3CADE235066FC00237E67 /* LaunchScreen.storyboard */; };
 		3BA3CAEF23506E0600237E67 /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAEE23506E0600237E67 /* SearchCityViewController.swift */; };
 		3BA3CAF12351709300237E67 /* ObservableAndBindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAF02351709300237E67 /* ObservableAndBindViewController.swift */; };
+		3BA3CAF32351838100237E67 /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3CAF22351838100237E67 /* CircleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		3BA3CAE1235066FC00237E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BA3CAEE23506E0600237E67 /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		3BA3CAF02351709300237E67 /* ObservableAndBindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableAndBindViewController.swift; sourceTree = "<group>"; };
+		3BA3CAF22351838100237E67 /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		681CD4D249FF9EA59C7932A8 /* Pods_RxSwiftByExamples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftByExamples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		916B6C0504C0780686B20313 /* Pods-RxSwiftByExamples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftByExamples.debug.xcconfig"; path = "Target Support Files/Pods-RxSwiftByExamples/Pods-RxSwiftByExamples.debug.xcconfig"; sourceTree = "<group>"; };
 		E4FFA48D6876CB17A2DCA46F /* Pods-RxSwiftByExamples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftByExamples.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftByExamples/Pods-RxSwiftByExamples.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		3BA3CAED23506AFB00237E67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3BA3CAF22351838100237E67 /* CircleViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				3BA3CAEF23506E0600237E67 /* SearchCityViewController.swift in Sources */,
 				3BA3CAD4235066F600237E67 /* AppDelegate.swift in Sources */,
 				3BA3CAD6235066F600237E67 /* SceneDelegate.swift in Sources */,
+				3BA3CAF32351838100237E67 /* CircleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

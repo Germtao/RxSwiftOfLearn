@@ -20,3 +20,46 @@
 
 - `Variable`：变量，对`BehaviorSubject`的包装。变量在释放后会自动发送`.onCompleted()`事件。
 
+> 创建一个简单的应用，该应用将球的颜色与视图中的位置相关联，还将视图的背景颜色与球的颜色相关联。
+
+```
+var centerVariable: BehaviorRelay<CGPoint?> = BehaviorRelay(value: .zero)
+var backgroundColorObservale: Observable<UIColor>!
+```
+> 将`CGPoint`的每个新值映射到`UIColor`。获得了`Observable`产生的新值，然后基于（不是那么）非常复杂的数学计算创建了`新的UIColor`。
+
+```
+backgroundColorObservale =
+    centerVariable.asObservable().map { center in
+        guard let center = center else { return UIColor.systemBackground }
+        
+        let red: CGFloat = max(center.x, center.y).truncatingRemainder(dividingBy: 255.0) / 255.0
+        let green: CGFloat = 0.0
+        let blue: CGFloat = 0.0
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+}
+```
+
+> 订阅`backgroundObservable`从`ViewModel`获取新颜色。
+
+```
+circleViewModel.backgroundColorObservale
+    .subscribe(onNext: { [unowned self] backgroundColor in
+        UIView.animate(withDuration: 0.1) {
+            self.circleView.backgroundColor = backgroundColor
+            let viewBgColor = backgroundColor.withAlphaComponent(0.2)
+            self.view.backgroundColor = viewBgColor
+        }
+    })
+    .disposed(by: disposeBag)
+```
+
+> 将`CircleView`的中心点绑定到中心对象
+
+```
+circleView
+    .rx
+    .observe(CGPoint.self, "center")
+    .bind(to: circleViewModel.centerVariable)
+    .disposed(by: disposeBag)
+```
