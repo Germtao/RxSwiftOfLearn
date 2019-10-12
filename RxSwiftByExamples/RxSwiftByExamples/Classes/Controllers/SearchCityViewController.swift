@@ -46,6 +46,7 @@ extension SearchCityViewController {
             .orEmpty // 使其为非可选
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // 延迟0.5进行更改
             .distinctUntilChanged() // 如果没有发生，请检查新值是否与旧值相同
+            .filter { !$0.isEmpty } // 如果新值确实是新值，过滤非空查询
             .subscribe(onNext: { [unowned self] (query) in // 接收到每个新值的通知
                 self.shownCities = self.allCities.filter { $0.hasPrefix(query) }
             })
